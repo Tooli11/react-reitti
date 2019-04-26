@@ -45,114 +45,69 @@ class ControlsReitti extends Component {
     render() { 
         return (
             <React.Fragment>
-                <form>
-                    <form
-                        onSubmit={(event) => this.props.onSubmitHaku(event,  this.state)}
-                    >
-                        <div className="form-row">
-                            <div className="col-0">
-                                <div className="input-group" style= {{width: 550}}>
-                                    <div className="input-group-prepend">
-                                        <span className="input-group-text">Lähtö- ja saapumispaikka</span>
-                                    </div>
-                                        <input 
-                                            type="text" 
-                                            aria-label="Lähtöpaikka" 
-                                            className="form-control"
-                                            onChange={(event) => this.onChange(event,0)}
-                                        />
-                                        <input 
-                                            type="text" 
-                                            aria-label="Saapumispaikka" 
-                                            className="form-control"
-                                            onChange={(event) => this.onChange(event,1)}
-                                        />
-                                </div>
-                            </div>   
-                        </div>
-                        <div className="form-row">
-                            <label for="staticEmail" className="col-sm-0 col-form-label">Klo:</label>
-                            <div className="col-0">
-                                <input 
-                                    type="time" 
-                                    className="form-control" 
-                                    value= {this.state.time}
-                                    onChange= {this.onChangeTimeDateCheckbox}
-                                />
-                            </div>
-                            
-                            <div className="col-0">
-                                <div className="custom-control custom-checkbox">
-                                    <label className="custom-control-label col-sm-0 col-form-label" for="customCheck1">Perillä</label>
-                                    <input 
-                                        type="checkbox" 
-                                        className="custom-control-input " 
-                                        id="customCheck1"
-                                        checked= {this.state.checkbox}
-                                        onChange= {this.onChangeTimeDateCheckbox}
-                                    />
-                                    
-                                </div>
-                            </div>
-                            <label for="staticEmail" className="col-sm-0 col-form-label">Päivä: </label>
-                            <div className="col-0">
-                                <input 
-                                    type="date"
-                                    className="form-control"
-                                    type="date"
-                                    value={this.state.date}
-                                    onChange={this.onChangeTimeDateCheckbox}
-                                />
-                            </div>
-                            
-                            <div className="col-0">
-                                <button type="submit" className="btn btn-outline-primary">Hae reitti</button>
-                            </div>
-
-                        </div>
-                    </form>
-
-
-
-
-
-                    <input 
-                        type="text"
-                        onChange={(event) => this.onChange(event,0)}
-                    />
-                    <input
-                        type="text"
-                        onChange={(event) => this.onChange(event,1)}
-                    />
-                </form>
                 <form
                     onSubmit={(event) => this.props.onSubmitHaku(event,  this.state)}
                 >
-                    <label>
-                        Klo:
-                        <input
-                            type="time"
-                            value= {this.state.time}
-                            onChange= {this.onChangeTimeDateCheckbox}
-                        />
-                    </label>
-                    <label>
-                        Perillä
-                        <input
-                            type="checkbox"
-                            checked= {this.state.checkbox}
-                            onChange= {this.onChangeTimeDateCheckbox}
-                        />
-                    </label>
-                    <label>
-                        Päivä:
-                        <input
-                            type="date"
-                            value={this.state.date}
-                            onChange={this.onChangeTimeDateCheckbox}
-                        />
-                    </label>
-                    <button type="submit" className="btn btn-light">Hae reitti</button>
+                    <div className="form-row">
+                        <div className="col-0">
+                            <div className="input-group" style= {{width: 550}}>
+                                <div className="input-group-prepend">
+                                    <span className="input-group-text">Lähtö- ja saapumispaikka</span>
+                                </div>
+                                    <input 
+                                        type="text" 
+                                        aria-label="Lähtöpaikka" 
+                                        className="form-control"
+                                        onChange={(event) => this.onChange(event,0)}
+                                    />
+                                    <input 
+                                        type="text" 
+                                        aria-label="Saapumispaikka" 
+                                        className="form-control"
+                                        onChange={(event) => this.onChange(event,1)}
+                                    />
+                            </div>
+                        </div>   
+                    </div>
+                    <div className="form-row">
+                        <label for="staticEmail" className="col-sm-0 col-form-label">Klo:</label>
+                        <div className="col-0">
+                            <input 
+                                type="time" 
+                                className="form-control" 
+                                value= {this.state.time}
+                                onChange= {this.onChangeTimeDateCheckbox}
+                            />
+                        </div>
+                        
+                        <div className="col-0">
+                            <div className="">
+                                <label className="col-sm-0 col-form-label" for="customCheck1">Perillä: </label>
+                                <input 
+                                    type="checkbox" 
+                                    className=" " 
+                                    id="customCheck1"
+                                    checked= {this.state.checkbox}
+                                    onChange= {this.onChangeTimeDateCheckbox}
+                                />                                    
+                            </div>
+                        </div>
+                        <label for="staticEmail" className="col-sm-0 col-form-label">Päivä: </label>
+                        <div className="col-0">
+                            <input 
+                                type="date"
+                                className="form-control"
+                                type="date"
+                                value={this.state.date}
+                                onChange={this.onChangeTimeDateCheckbox}
+                            />
+                        </div>
+                        
+                        <div className="col-0">
+                            <button type="submit" className="btn btn-outline-primary">Hae reitti</button>
+                        </div>
+
+                    </div>
                 </form>
             </React.Fragment>
           );
