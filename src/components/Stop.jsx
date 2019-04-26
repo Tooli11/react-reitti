@@ -4,7 +4,7 @@ import {Marker, Popup} from 'react-leaflet';
 import PopupStop from './PopupStop';
 import PopupStopApollo from './PopupStopApollo';
 
-var stopIcon = L.divIcon({ iconSize: [5, 5]});
+var stopIcon = L.divIcon({ iconSize: [7, 7]});
 class Stop extends Component {
     state = { viesti : '' }
     /*

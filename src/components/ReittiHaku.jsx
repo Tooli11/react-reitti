@@ -100,7 +100,7 @@ class ReittiHaku extends Component {
                 trips= {this.state.trips}
                 stops= {this.state.stops}
                 legs= {this.state.legs}
-                topicReset= {this.state.topicReset}>
+            >
                     <MqttReceiver
                         topicReset= {this.state.topicReset}
                         topics={this.state.topics}
