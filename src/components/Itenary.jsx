@@ -20,7 +20,11 @@ class Itenary extends Component {
         const {itenary} = this.props; 
         return (  
             <React.Fragment>
-                <p onClick={() => this.props.onClick(itenary)}>Itenary {timeToHM(itenary.startTime)} - {timeToHM(itenary.endTime)} ({laskeKesto(itenary.duration)})</p>
+                <p 
+                    onClick={() => this.props.onClick(itenary)}
+                >
+                    Itenary {timeToHM(itenary.startTime)} - {timeToHM(itenary.endTime)} ({laskeKesto(itenary.duration)})
+                </p>
                 {itenary.legs.map(leg => 
                     <Leg 
                         key={leg.startTime}

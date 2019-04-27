@@ -108,13 +108,17 @@ class ReittiHaku extends Component {
             </Lmap>
             {this.state.itenaries === null ?
             <p>Placeholder 1: itineraries</p> :
-            this.state.itenaries.map( itenary => 
-                <Itenary
-                    key={""+itenary.startTime + itenary.endTime + itenary.walkDistance}
-                    itenary={itenary}
-                    id={itenary.startTime + itenary.endTime + itenary.walkDistance}
-                    onClick={this.handleItenaryClick}
-                />)}
+            <div
+                className="itenaries-container"
+            >
+                {this.state.itenaries.map( itenary => 
+                    <Itenary
+                        key={""+itenary.startTime + itenary.endTime + itenary.walkDistance}
+                        itenary={itenary}
+                        id={itenary.startTime + itenary.endTime + itenary.walkDistance}
+                        onClick={this.handleItenaryClick}
+                    />)}
+            </div>}
         </React.Fragment>
         );
     }

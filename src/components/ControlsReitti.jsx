@@ -43,14 +43,18 @@ class ControlsReitti extends Component {
 
 
     render() { 
+        /*
+        style= {{width: 550}}
+        */
         return (
             <React.Fragment>
+                <div className="ControlsReitti-form-div">
                 <form
                     onSubmit={(event) => this.props.onSubmitHaku(event,  this.state)}
                 >
                     <div className="form-row">
                         <div className="col-0">
-                            <div className="input-group" style= {{width: 550}}>
+                            <div className="input-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text">Lähtö- ja saapumispaikka</span>
                                 </div>
@@ -79,19 +83,18 @@ class ControlsReitti extends Component {
                                 onChange= {this.onChangeTimeDateCheckbox}
                             />
                         </div>
-                        
+   
+                        <label className="col-sm-0 col-form-label" for="customCheck1">Perillä: </label>
                         <div className="col-0">
-                            <div className="">
-                                <label className="col-sm-0 col-form-label" for="customCheck1">Perillä: </label>
-                                <input 
-                                    type="checkbox" 
-                                    className=" " 
-                                    id="customCheck1"
-                                    checked= {this.state.checkbox}
-                                    onChange= {this.onChangeTimeDateCheckbox}
-                                />                                    
-                            </div>
-                        </div>
+                            <input 
+                                type="checkbox" 
+                                className="col-sm-0" 
+                                id="customCheck1"
+                                checked= {this.state.checkbox}
+                                onChange= {this.onChangeTimeDateCheckbox}
+                            />      
+                        </div>                              
+          
                         <label for="staticEmail" className="col-sm-0 col-form-label">Päivä: </label>
                         <div className="col-0">
                             <input 
@@ -109,6 +112,7 @@ class ControlsReitti extends Component {
 
                     </div>
                 </form>
+                </div>
             </React.Fragment>
           );
     }

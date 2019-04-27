@@ -63,10 +63,10 @@ class PopupStopApollo extends Component {
                         return (
                         <React.Fragment>
                             <ul>
-                                <li>
+                                <li className="stopPopup-otsikot">
                                     {this.props.stop.id}: <strong>{this.props.stop.name}</strong>
                                 </li>
-                                <li>
+                                <li className="stopPopup-otsikot">
                                     Linja Odotus rt Aikataulu status
                                 </li>
                             
