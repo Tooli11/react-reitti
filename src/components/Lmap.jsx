@@ -62,10 +62,18 @@ class Lmap extends Component {
         console.log(this.props.itenaries);
         console.log(this.props.legs);
         console.log(this.props.stops);
+        console.log(this.props.bounds);
         */
        
+       
         return ( 
-            <Map center={[60.220864, 24.929819]} zoom={10}>
+            <Map 
+                center={[60.220864, 24.929819]} 
+                zoom={10}
+                bounds= {this.props.bounds}
+                useFlyTo={true}
+                
+            >
                 <TileLayer
                     url="https://cdn.digitransit.fi/map/v1/hsl-map-256/{z}/{x}/{y}.png"
                     attribution='Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>'
@@ -100,6 +108,24 @@ class Lmap extends Component {
 }
  
 export default Lmap;
+
+/*
+bounds= {[[60.306374, 24.985113],[60.247157, 24.846272]]}
+
+ei toimi alempi:
+bounds= {[[60.218234, 24.812424],[60.218234, 24.812424]]}
+bounds= {[[60.218234 , 24.812424],[60.171305 , 24.942965]]}
+
+var southWest = L.latLng(40.712, -74.227),
+    northEast = L.latLng(40.774, -74.125),
+    bounds = L.latLngBounds(southWest, northEast);
+
+
+map.fitBounds([
+    [40.712, -74.227],
+    [40.774, -74.125]
+]);
+*/
 /*
 {this.props.tilanne === true ? <Bussi
                     bussit={this.state.bussit}

@@ -17,7 +17,8 @@ class ReittiHaku extends Component {
             legs: null,
             topics: null,
             unSubTopics: null,
-            topicReset: false
+            topicReset: false,
+            bounds: null
         }
         this.onSubmitHaku = this.onSubmitHaku.bind(this);
         this.handleItenaryClick = this.handleItenaryClick.bind(this);
@@ -54,8 +55,24 @@ class ReittiHaku extends Component {
             loading: true
         })
         //fetchItenariesA = (alkuKoord,loppuKoord, kellonaika, date, arriveBy)
-        const koordinaatit0 = await fetchLocations(controlsReitti.paikat[0]);
-        const koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);
+        
+        let koordinaatit0 = await fetchLocations(controlsReitti.paikat[0]);
+        let koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);
+
+        /*
+        let kordi0 = koordinaatit0.replace("lat:", "");
+        kordi0 = kordi0.replace("lon:", "");
+
+        let kordi1 = koordinaatit1.replace("lat:", "");
+        kordi1 = kordi1.replace("lon:", "");
+        */
+        /*
+        koordinaatit = "lat: "+result.features[0].geometry.coordinates[1]+" ,lon: "+result.features[0].geometry.coordinates[0];
+        */
+        //console.log(kordi0, kordi1);
+
+        
+
         const {time, date, checkbox} = controlsReitti;
         const itenaries =await fetchItenariesA(koordinaatit0,koordinaatit1, time, date, checkbox);
         const osat = returnItenariesPartsAndTopic(itenaries);
@@ -72,7 +89,8 @@ class ReittiHaku extends Component {
             stops: osat[1],
             legs: osat[2],
             topics: osat[3],
-            topicReset: true
+            topicReset: true,
+            bounds:  [koordinaatit0,koordinaatit1]   //testi
         })
     }
 
@@ -107,6 +125,7 @@ class ReittiHaku extends Component {
                 trips= {this.state.trips}
                 stops= {this.state.stops}
                 legs= {this.state.legs}
+                bounds={this.state.bounds}
             >
                     <MqttReceiver
                         topicReset= {this.state.topicReset}
