@@ -107,7 +107,9 @@ class ControlsReitti extends Component {
                         </div>
                         
                         <div className="col-0">
-                            <button type="submit" className="btn btn-outline-primary">Hae reitti</button>
+                            {this.props.loading === false ?
+                            <button type="submit" className="btn btn-outline-primary">Hae reitti</button> :
+                            <button type="submit" className="btn btn-outline-primary" disabled>Loading...</button> }
                         </div>
 
                     </div>

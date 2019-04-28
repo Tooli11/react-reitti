@@ -10,6 +10,7 @@ class ReittiHaku extends Component {
     constructor(){
         super();
         this.state = {
+            loading: false,
             itenaries: null,
             trips: null,
             stops: null,
@@ -26,7 +27,8 @@ class ReittiHaku extends Component {
         console.log("reittihakuComponent did update");
         if (this.state.topicReset === true){
             this.setState({
-                topicReset: false
+                topicReset: false,
+                loading: false
             })
         }   
     }
@@ -47,6 +49,10 @@ class ReittiHaku extends Component {
 
     async onSubmitHaku(event, controlsReitti){
         event.preventDefault();
+
+        this.setState({
+            loading: true
+        })
         //fetchItenariesA = (alkuKoord,loppuKoord, kellonaika, date, arriveBy)
         const koordinaatit0 = await fetchLocations(controlsReitti.paikat[0]);
         const koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);
@@ -94,6 +100,7 @@ class ReittiHaku extends Component {
         <React.Fragment>
             <ControlsReitti
                 onSubmitHaku= {this.onSubmitHaku}
+                loading={this.state.loading}
             />
             <Lmap
                 itenaries={this.state.itenaries}
