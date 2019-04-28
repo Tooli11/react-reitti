@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import {Map, Marker, Popup, TileLayer, Polyline} from 'react-leaflet';
+import {Map, Popup, TileLayer, Polyline} from 'react-leaflet';
 import Stop from './Stop';
-import {annaKoordinaattiArray, mapItenaries} from '../utils/Lmapping';
 import LeafletLeg from './LeafletLeg';
 import Trip from './Trip';
-import Bussi from './Bussi';
+
 
 
 
@@ -86,7 +85,7 @@ class Lmap extends Component {
                     <Popup>Pretty popup.<br/> Easily customizable</Popup>
                 </Polyline>
                 
-                {this.props.children}
+                
 
                 {this.props.stops !== null ? this.props.stops.map( stop =>
                     <Stop
@@ -94,6 +93,7 @@ class Lmap extends Component {
                         stop={stop}
                     />
                 ): ''}
+                {this.props.children}
                 
                 <Trip
                     trips={this.props.trips}

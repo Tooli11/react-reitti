@@ -93,5 +93,12 @@ li {
   margin: 5px auto 10px auto;
 }
 
+.stop-div-icon{
+  background-color: white; /* #f442e8;*/
+  border: 1px;
+  border-color: aqua;
+  border-style: solid;
+}
+
 
 

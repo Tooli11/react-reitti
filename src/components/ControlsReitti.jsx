@@ -15,9 +15,11 @@ class ControlsReitti extends Component {
     }
 
     onChange(event, index){
+        /*
         console.log(event.target.value);
         console.log(index);
         console.log(this.state.paikat[index]);
+        */
         const paikat = [...this.state.paikat]
         paikat[index] = event.target.value;
         this.setState({
@@ -74,7 +76,7 @@ class ControlsReitti extends Component {
                         </div>   
                     </div>
                     <div className="form-row">
-                        <label for="staticEmail" className="col-sm-0 col-form-label">Klo:</label>
+                        <label htmlFor="staticEmail" className="col-sm-0 col-form-label">Klo:</label>
                         <div className="col-0">
                             <input 
                                 type="time" 
@@ -84,7 +86,7 @@ class ControlsReitti extends Component {
                             />
                         </div>
    
-                        <label className="col-sm-0 col-form-label" for="customCheck1">Perillä: </label>
+                        <label className="col-sm-0 col-form-label" htmlFor="customCheck1">Perillä: </label>
                         <div className="col-0">
                             <input 
                                 type="checkbox" 
@@ -95,10 +97,9 @@ class ControlsReitti extends Component {
                             />      
                         </div>                              
           
-                        <label for="staticEmail" className="col-sm-0 col-form-label">Päivä: </label>
+                        <label htmlFor="staticEmail" className="col-sm-0 col-form-label">Päivä: </label>
                         <div className="col-0">
                             <input 
-                                type="date"
                                 className="form-control"
                                 type="date"
                                 value={this.state.date}

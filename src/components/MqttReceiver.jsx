@@ -19,7 +19,7 @@ class MqttReceiver extends Component {
         const client = this.client;
         console.log("Mounted mqtt receiver");
         //console.log(this.state.paikat);
-        var topic = "/hfp/v1/journey/ongoing/+/+/+/2553/+/+/+/+/+/#";
+        //var topic = "/hfp/v1/journey/ongoing/+/+/+/2553/+/+/+/+/+/#";
  
 
         client.on("message", (topic, message) => {

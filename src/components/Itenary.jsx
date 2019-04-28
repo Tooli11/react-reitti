@@ -5,25 +5,21 @@ import {laskeKesto, timeToHM} from '../utils/aika';
 class Itenary extends Component {
     constructor(){
        super();
-       this.handleClick = this.handleClick.bind(this);
+       
 
     }
     state = {  }
-    handleClick(id){
-        console.log("Handlattu click");
-        console.log(this.props.id);
-        console.log("tässä id:", id);
-    }
+    
 
     render() { 
-        console.log(this.props.itenary)
+        //console.log(this.props.itenary)
         const {itenary} = this.props; 
         return (  
             <React.Fragment>
                 <p 
                     onClick={() => this.props.onClick(itenary)}
                 >
-                    Itenary {timeToHM(itenary.startTime)} - {timeToHM(itenary.endTime)} ({laskeKesto(itenary.duration)})
+                    Reitti {timeToHM(itenary.startTime)} - {timeToHM(itenary.endTime)} ({laskeKesto(itenary.duration)})
                 </p>
                 {itenary.legs.map(leg => 
                     <Leg 

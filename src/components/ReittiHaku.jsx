@@ -54,24 +54,10 @@ class ReittiHaku extends Component {
         this.setState({
             loading: true
         })
-        //fetchItenariesA = (alkuKoord,loppuKoord, kellonaika, date, arriveBy)
+    
         
         let koordinaatit0 = await fetchLocations(controlsReitti.paikat[0]);
-        let koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);
-
-        /*
-        let kordi0 = koordinaatit0.replace("lat:", "");
-        kordi0 = kordi0.replace("lon:", "");
-
-        let kordi1 = koordinaatit1.replace("lat:", "");
-        kordi1 = kordi1.replace("lon:", "");
-        */
-        /*
-        koordinaatit = "lat: "+result.features[0].geometry.coordinates[1]+" ,lon: "+result.features[0].geometry.coordinates[0];
-        */
-        //console.log(kordi0, kordi1);
-
-        
+        let koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);   
 
         const {time, date, checkbox} = controlsReitti;
         const itenaries =await fetchItenariesA(koordinaatit0,koordinaatit1, time, date, checkbox);
@@ -90,7 +76,7 @@ class ReittiHaku extends Component {
             legs: osat[2],
             topics: osat[3],
             topicReset: true,
-            bounds:  [koordinaatit0,koordinaatit1]   //testi
+            bounds:  [koordinaatit0,koordinaatit1]   
         })
     }
 

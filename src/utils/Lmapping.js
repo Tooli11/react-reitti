@@ -113,7 +113,7 @@ export const returnItenariesPartsAndTopic = (itineraries) => {
     itineraries.forEach(itinerary => {
         console.log(itinerary);
         console.log("id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance));
-        let name = "id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance);
+        //let name = "id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance);
 
         itinerary.legs.forEach( leg =>{
             const legCoordinateArray = polyline.decode(leg.legGeometry.points); 
@@ -148,7 +148,7 @@ export const returnItenariesPartsAndTopic = (itineraries) => {
 export const returnOneItenaryPartsAndTopic = (itinerary) => {
     let palautukset = [[],[],[],[]];
     console.log("id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance));
-    let name = "id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance);
+    //let name = "id"+(itinerary.startTime + itinerary.endTime + itinerary.walkDistance);
 
     itinerary.legs.forEach( leg =>{
         const legCoordinateArray = polyline.decode(leg.legGeometry.points); 
@@ -170,9 +170,6 @@ export const returnOneItenaryPartsAndTopic = (itinerary) => {
                 if (!(found)){
                     palautukset[1].push({coords: [t.stop.lat, t.stop.lon], name: t.stop.name, id: t.stop.gtfsId});
                 }
-
-
-
             })
         }
         let vari = valitseVari(leg.mode);  // valitaan viivan väri kulkuneuvon mukaan.
