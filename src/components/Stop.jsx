@@ -9,7 +9,10 @@ var stopIcon = L.divIcon({
     className: "stop-div-icon"
 });
 class Stop extends Component {
-    state = { viesti : '' }
+    state = { 
+        active: true
+    }
+
     /*
     componentDidUpdate(){
         if (this.state.viesti !== ''){
@@ -27,20 +30,25 @@ class Stop extends Component {
                     position={stop.coords}
                     icon={stopIcon}
                 >
-                    {this.state.viesti === '' ? <Popup
+                    {this.state.active === true ? 
+                    <Popup
                         minWidth={170}
                         onClose= {() => {this.setState({
-                            viesti: 'popup has closed'
+                            active: false
                         })}}
-                        ><PopupStopApollo
-                            stop={stop}
-                        />
+                        >
+                            <PopupStopApollo
+                                stop={stop}
+                            />
                     </Popup> : 
                     <Popup
                         onOpen= {() => {this.setState({
-                            viesti: ''
+                            active: true
                         })}}
-                    >Suljettu popup hetken</Popup> }
+                    >
+                        Suljettu popup hetken
+                    </Popup> 
+                    }
                 </Marker>
             </React.Fragment>
           );
@@ -49,6 +57,35 @@ class Stop extends Component {
 
  
 export default Stop;
+
+/*
+<Marker
+                    position={stop.coords}
+                    icon={stopIcon}
+                >
+                    {this.state.viesti === '' ? 
+                    <Popup
+                        minWidth={170}
+                        onClose= {() => {this.setState({
+                            viesti: 'popup has closed'
+                        })}}
+                        >
+                            <PopupStopApollo
+                                stop={stop}
+                            />
+                    </Popup> : 
+                    <Popup
+                        onOpen= {() => {this.setState({
+                            viesti: ''
+                        })}}
+                    >
+                        Suljettu popup hetken
+                    </Popup> 
+                    }
+                </Marker>
+
+*/
+
 
 /*
 <PopupStop

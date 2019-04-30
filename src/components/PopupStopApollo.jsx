@@ -97,6 +97,8 @@ class PopupStopApollo extends Component {
  
 export default PopupStopApollo;
 
+
+
 /*
 {({ loading, error, data }) => {
                         if (loading) return <p>Loading...</p>;

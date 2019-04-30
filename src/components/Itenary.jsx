@@ -3,14 +3,7 @@ import Leg from './Leg';
 import {laskeKesto, timeToHM} from '../utils/aika';
 
 class Itenary extends Component {
-    constructor(){
-       super();
-       
-
-    }
-    state = {  }
     
-
     render() { 
         //console.log(this.props.itenary)
         const {itenary} = this.props; 
@@ -34,8 +27,3 @@ class Itenary extends Component {
 }
  
 export default Itenary;
-/*
-{this.props.itenary.map(leg => 
-    <p>Leg</p>
-)}
-*/

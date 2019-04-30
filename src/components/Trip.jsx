@@ -3,7 +3,7 @@ import {Polyline, Popup} from 'react-leaflet';
 
 
 class Trip extends Component {
-    state = {  }
+
     render() { 
         return (
             <React.Fragment>

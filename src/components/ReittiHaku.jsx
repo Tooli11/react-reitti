@@ -50,12 +50,10 @@ class ReittiHaku extends Component {
 
     async onSubmitHaku(event, controlsReitti){
         event.preventDefault();
-
         this.setState({
             loading: true
         })
     
-        
         let koordinaatit0 = await fetchLocations(controlsReitti.paikat[0]);
         let koordinaatit1 = await fetchLocations(controlsReitti.paikat[1]);   
 
@@ -116,21 +114,22 @@ class ReittiHaku extends Component {
                     <MqttReceiver
                         topicReset= {this.state.topicReset}
                         topics={this.state.topics}
-                        unSubTopics={this.state.unSubTopics}/>
+                        unSubTopics={this.state.unSubTopics}
+                    />
             </Lmap>
             {this.state.itenaries === null ?
-            <p>Placeholder 1: itineraries</p> :
-            <div
-                className="itenaries-container"
-            >
-                {this.state.itenaries.map( itenary => 
-                    <Itenary
-                        key={""+itenary.startTime + itenary.endTime + itenary.walkDistance}
-                        itenary={itenary}
-                        id={itenary.startTime + itenary.endTime + itenary.walkDistance}
-                        onClick={this.handleItenaryClick}
-                    />)}
-            </div>}
+                <p>Placeholder 1: itineraries</p> :
+                <div
+                    className="itenaries-container"
+                >
+                    {this.state.itenaries.map( itenary => 
+                        <Itenary
+                            key={""+itenary.startTime + itenary.endTime + itenary.walkDistance}
+                            itenary={itenary}
+                            id={itenary.startTime + itenary.endTime + itenary.walkDistance}
+                            onClick={this.handleItenaryClick}
+                        />)}
+                </div>}
         </React.Fragment>
         );
     }

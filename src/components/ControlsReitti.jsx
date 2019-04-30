@@ -5,7 +5,6 @@ class ControlsReitti extends Component {
         super();
         this.state = {
             paikat : ['Sello', 'Rautatientori'],
-            koordinaatit : ['koordinaatit1', 'koordinaatit2'],   // Tätä ei sitten käytettykään.
             date: new Date().toISOString().slice(0, 10),   // Tämä on väärä päivämäärä tiettyyn aikaan. 
             time: '',
             checkbox: false
@@ -48,9 +47,8 @@ class ControlsReitti extends Component {
         /*
         style= {{width: 550}}
         */
-        return (
-            <React.Fragment>
-                <div className="ControlsReitti-form-div">
+        return (        
+            <div className="ControlsReitti-form-div">
                 <form
                     onSubmit={(event) => this.props.onSubmitHaku(event,  this.state)}
                 >
@@ -112,11 +110,10 @@ class ControlsReitti extends Component {
                             <button type="submit" className="btn btn-outline-primary">Hae reitti</button> :
                             <button type="submit" className="btn btn-outline-primary" disabled>Loading...</button> }
                         </div>
-
                     </div>
                 </form>
-                </div>
-            </React.Fragment>
+            </div>
+            
           );
     }
 }

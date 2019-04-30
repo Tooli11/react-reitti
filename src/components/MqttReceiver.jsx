@@ -72,14 +72,8 @@ class MqttReceiver extends Component {
                 this.setState({
                     bussit : []
                 })
-            }, 150);
-            /*
-            //this.props.client.
-            console.log("Mqtt receiver tilanne false, bussit nollattu")
-            this.setState({
-                bussit : []
-            })
-            */
+            }, 200);
+            
         }
     }
 

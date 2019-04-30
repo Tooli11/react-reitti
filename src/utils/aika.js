@@ -25,7 +25,7 @@ export function laskeKesto(sekuntiAika){
 }
 
 
-//25260
+
 
 
 
