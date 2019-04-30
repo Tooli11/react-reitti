@@ -8,6 +8,10 @@ var stopIcon = L.divIcon({
     iconSize: [7, 7],
     className: "stop-div-icon"
 });
+var changeStopIcon = L.divIcon({
+    iconSize: [7,7],
+    className: "stop-change-div-icon"
+})
 class Stop extends Component {
     state = { 
         active: true
@@ -28,7 +32,7 @@ class Stop extends Component {
             <React.Fragment>
                 <Marker
                     position={stop.coords}
-                    icon={stopIcon}
+                    icon={stop.type === "from" ? changeStopIcon : stopIcon}
                 >
                     {this.state.active === true ? 
                     <Popup

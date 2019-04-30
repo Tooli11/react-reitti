@@ -36,6 +36,25 @@ export const returnItenariesPartsAndTopic = (itineraries) => {
                 const tripCoordinateArray = polyline.decode(leg.trip.tripGeometry.points); // Harmaa linjakohta löytyy tuosta
                 palautukset[0].push({coordsArray: tripCoordinateArray,id: leg.trip.id});
                 palautukset[3].push(muodostaTopic(leg));
+
+                const array = [leg.from.stop, leg.to.stop];
+                array.forEach((stop) => {
+                    let found = false;
+                    for (let i=0; i < palautukset[1].length; i++){
+                        if (palautukset[1][i].id === stop.gtfsId){
+                            //console.log('Löydetty stop match');
+                            found= true;
+                            //break;
+                        }
+                    }
+                    if (!(found)){
+                        palautukset[1].push({
+                            coords: [stop.lat, stop.lon], 
+                            name: stop.name, 
+                            id: stop.gtfsId, 
+                            type: "from"});
+                    }
+                });
                                     
                 const stopit = leg.trip.stoptimes;
                 stopit.forEach( (t) => {
@@ -48,7 +67,12 @@ export const returnItenariesPartsAndTopic = (itineraries) => {
                         }
                     }
                     if (!(found)){
-                        palautukset[1].push({coords: [t.stop.lat, t.stop.lon], name: t.stop.name, id: t.stop.gtfsId});
+                        palautukset[1].push({
+                            coords: [t.stop.lat, t.stop.lon], 
+                            name: t.stop.name, 
+                            id: t.stop.gtfsId,
+                            type: "normal"
+                        });
                     }
                     //palautukset[1].push({coords: [t.stop.lat, t.stop.lon], name: t.stop.name});
                 })
@@ -76,6 +100,16 @@ export const returnOneItenaryPartsAndTopic = (itinerary) => {
             const tripCoordinateArray = polyline.decode(leg.trip.tripGeometry.points); // Harmaa linjakohta löytyy tuosta
             palautukset[0].push({coordsArray: tripCoordinateArray,id: leg.trip.id});
             palautukset[3].push(muodostaTopic(leg));
+
+            const stop = leg.from.stop
+            const array = [leg.from.stop, leg.to.stop]
+            array.forEach((stop) => {
+            palautukset[1].push({
+                coords: [stop.lat, stop.lon], 
+                name: stop.name, 
+                id: stop.gtfsId, 
+                type: "from"});
+            })
                                 
             const stopit = leg.trip.stoptimes;
             stopit.forEach( (t) => {
@@ -88,13 +122,23 @@ export const returnOneItenaryPartsAndTopic = (itinerary) => {
                     }
                 }
                 if (!(found)){
-                    palautukset[1].push({coords: [t.stop.lat, t.stop.lon], name: t.stop.name, id: t.stop.gtfsId});
+                    palautukset[1].push({
+                        coords: [t.stop.lat, t.stop.lon], 
+                        name: t.stop.name, 
+                        id: t.stop.gtfsId,
+                        type: "normal"
+                    });
                 }
+                //palautukset[1].push({coords: [t.stop.lat, t.stop.lon], name: t.stop.name});
             })
         }
         let vari = valitseVari(leg.mode);  // valitaan viivan väri kulkuneuvon mukaan.
-        palautukset[2].push({coordsArray: legCoordinateArray,color: vari, id: leg.startTime + leg.endTime + leg.distance});
+        let id = leg.mode !== "WALK" ? leg.trip.id : Math.random()
+        //leg.startTime + leg.endTime + leg.distance;
+
+        palautukset[2].push({coordsArray: legCoordinateArray,color: vari, id: id});
     })
+
     return palautukset;
 } 
 

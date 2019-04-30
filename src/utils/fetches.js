@@ -69,6 +69,7 @@ const reittiQuery5 = (paikka1, paikka2, kellonaika, date, arriveBy) => {
            from {
              name
              stop {
+               gtfsId
                name
                lat
                lon
@@ -78,6 +79,7 @@ const reittiQuery5 = (paikka1, paikka2, kellonaika, date, arriveBy) => {
            to {
              name
              stop {
+               gtfsId
                name
                lat
                lon
