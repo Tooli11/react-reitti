@@ -3,7 +3,9 @@ import gql from 'graphql-tag';
 
 
 const clientA = new ApolloClient({
-    uri: "http://api.digitransit.fi/routing/v1/routers/hsl/index/graphql"
+    uri: "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql",
+    
+   
   });
 
 
@@ -24,6 +26,25 @@ export const fetchLocations = (haettavaPaikka = "kamppi") => {
   return(palautusKoordinaatit);    
 }
 
+/*
+export const fetchLocations = (haettavaPaikka = "kamppi") => { 
+  const url = `https://api.digitransit.fi/geocoding/v1/search?text=${haettavaPaikka}&size=1`;
+  let koordinaatit = '';
+  const palautusKoordinaatit = fetch(url)
+      .then(response => response.json())
+      .then(result => {
+          //this.logContent(result.data.routes)
+          console.log(result); 
+          koordinaatit = [result.features[0].geometry.coordinates[1], result.features[0].geometry.coordinates[0]];
+          console.log(koordinaatit);
+          return (koordinaatit);   
+      })
+      .catch(error => console.log(error));
+  //console.log("palautus: ",palautusKoordinaatit);
+  return(palautusKoordinaatit);    
+}
+*/
+
 
 export const fetchItenariesA = (alkuKoord,loppuKoord, kellonaika, date, arriveBy) => {
     //const url = "https://api.digitransit.fi/routing/v1/routers/hsl/index/graphql";
@@ -42,7 +63,10 @@ export const fetchItenariesA = (alkuKoord,loppuKoord, kellonaika, date, arriveBy
             return data.data.plan.itineraries;
             
         })
-        .catch(error => console.log(error));
+        .catch(error => {
+          console.log(error);
+          return (null);
+        });
     return itineraries; 
 }
 

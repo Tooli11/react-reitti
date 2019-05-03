@@ -69,7 +69,9 @@ li {
 .leaflet-popup-close-button {
   top: 0px !important;
 }
-
+.leaflet-tooltip {
+  padding: 0;
+}
 
 .itenaries-container {
   background-color: white;
@@ -106,6 +108,9 @@ li {
   border-style: solid;
 }
  
+.alue  {
+  width: auto;
+}
 
 
 

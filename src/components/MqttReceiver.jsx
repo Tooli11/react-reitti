@@ -19,7 +19,8 @@ class MqttReceiver extends Component {
         const client = this.client;
         console.log("Mounted mqtt receiver");
         //console.log(this.state.paikat);
-        //var topic = "/hfp/v1/journey/ongoing/+/+/+/2553/+/+/+/+/+/#";
+        var topic = "/hfp/v1/journey/ongoing/+/+/+/+/+/+/+/+/0/#";
+        //client.subscribe(topic);
  
 
         client.on("message", (topic, message) => {
@@ -35,13 +36,14 @@ class MqttReceiver extends Component {
         if  (this.state.bussit.length > 0){
             const bussit = [...this.state.bussit];
             for(let i=0; i < bussit.length; i++){
-                if (bussit[i].veh === vehicle_position.veh){
+                if (bussit[i].veh === vehicle_position.veh && bussit[i].oper === vehicle_position.oper){
                     //console.log("Löytyi sama"); 
                     bussit[i] = vehicle_position;
                     found = true;
                     this.setState({
                         bussit
                     })
+                    break;
                     
                 } 
             }
@@ -56,6 +58,7 @@ class MqttReceiver extends Component {
             })
         }
         });  
+        
     }
 
     componentDidUpdate(){
@@ -85,10 +88,13 @@ class MqttReceiver extends Component {
     render() { 
         return (
             <React.Fragment>
-                {this.state.bussit.length > 0 ? 
+                {this.state.bussit.length > 0 ? this.state.bussit.map( bussi => 
+
+
                 <Bussi
-                    bussit= {this.state.bussit}
-                /> : ''}
+                    key= {""+bussi.oper + bussi.veh}
+                    bussi= {bussi}
+                />) : ''}
             </React.Fragment>
             
           );

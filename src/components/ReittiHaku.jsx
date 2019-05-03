@@ -59,23 +59,26 @@ class ReittiHaku extends Component {
 
         const {time, date, checkbox} = controlsReitti;
         const itenaries =await fetchItenariesA(koordinaatit0,koordinaatit1, time, date, checkbox);
-        const osat = returnItenariesPartsAndTopic(itenaries);
-        if (this.state.topics !== null){
-            const unSubTopics = this.state.topics;
+        if (itenaries !== null){
+            const osat = returnItenariesPartsAndTopic(itenaries);
+            if (this.state.topics !== null){
+                const unSubTopics = this.state.topics;
+                this.setState({
+                    unSubTopics
+                })
+            }
+            console.log(osat);
             this.setState({
-                unSubTopics
+                itenaries,
+                trips: osat[0],
+                stops: osat[1],
+                legs: osat[2],
+                topics: osat[3],
+                topicReset: true,
+                bounds:  [koordinaatit0,koordinaatit1]   
             })
         }
-        console.log(osat);
-        this.setState({
-            itenaries,
-            trips: osat[0],
-            stops: osat[1],
-            legs: osat[2],
-            topics: osat[3],
-            topicReset: true,
-            bounds:  [koordinaatit0,koordinaatit1]   
-        })
+        
     }
 
     handleItenaryClick(itenary){
@@ -100,7 +103,7 @@ class ReittiHaku extends Component {
     render() { 
         return (
         <React.Fragment>
-            <ControlsReitti
+             <ControlsReitti
                 onSubmitHaku= {this.onSubmitHaku}
                 loading={this.state.loading}
             />
@@ -117,6 +120,7 @@ class ReittiHaku extends Component {
                         unSubTopics={this.state.unSubTopics}
                     />
             </Lmap>
+            
             {this.state.itenaries === null ?
                 <p>Placeholder 1: itineraries</p> :
                 <div
