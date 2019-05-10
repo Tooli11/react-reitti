@@ -91,8 +91,11 @@ li {
   
 }
 .ControlsReitti-form-div {
-  width: 555px;
+  width: 700px;
   margin: 5px auto 10px auto;
+}
+.hae-btn {
+  width: 150px;
 }
 
 .stop-div-icon{
